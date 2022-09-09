@@ -30,8 +30,6 @@ randomButton.addEventListener('click', () => {
     currentMode = 'rainbow';
 });
 
-console.log(size_selector.value);
-
 pad.style.gridTemplateColumns = `repeat(${size_selector.value}, 1fr)`;
 pad.style.gridTemplateRows = `repeat(${size_selector.value}, 1fr)`;
 
