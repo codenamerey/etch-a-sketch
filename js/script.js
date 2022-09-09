@@ -1,5 +1,6 @@
 let pad = document.querySelector('.drawing-pad');
 let size_selector = document.getElementById('sizeRange');
+let pallete = document.querySelector('#pallete');
 let pixelSize = Math.pow(size_selector.value, 2);
 let mousedown = 0;
 let color = 'black';
@@ -11,6 +12,8 @@ window.addEventListener('mousedown', () => {
 window.addEventListener('mouseup', () => {
     mousedown--;
 });
+
+pallete.addEventListener('change', setColor);
 
 console.log(size_selector.value);
 
@@ -50,9 +53,14 @@ function setPixelSize(pixelSize) {
 }
 
 function changeColor(e) {
+    if(mousedown < 0) mousedown = 0;
     if(!mousedown) return;
     if(e.target.style.background == color) return;
     else {
         e.target.style.background = color;
     }
+}
+
+function setColor(e) {
+    color = e.target.value;
 }
