@@ -5,6 +5,7 @@ let eraserButton = document.querySelector('#eraser');
 let pixelSize = Math.pow(size_selector.value, 2);
 let mousedown = 0;
 let color = 'black';
+let currentMode = 'regular';
 
 window.addEventListener('mousedown', () => {
     mousedown++;
@@ -14,10 +15,13 @@ window.addEventListener('mouseup', () => {
     mousedown--;
 });
 
-pallete.addEventListener('change', setColor);
+pallete.addEventListener('change', (e) => {
+    currentMode = 'regular';
+    color = e.target.value;
+});
 eraserButton.addEventListener('click', () => {
-    color = 'white';
-})
+    currentMode = 'eraser';
+});
 
 console.log(size_selector.value);
 
@@ -63,8 +67,4 @@ function changeColor(e) {
     else {
         e.target.style.background = color;
     }
-}
-
-function setColor(e) {
-    color = e.target.value;
 }
