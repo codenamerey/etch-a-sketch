@@ -2,6 +2,7 @@ let pad = document.querySelector('.drawing-pad');
 let size_selector = document.getElementById('sizeRange');
 let pallete = document.querySelector('#pallete');
 let eraserButton = document.querySelector('#eraser');
+let randomButton = document.querySelector('#random-button');
 let pixelSize = Math.pow(size_selector.value, 2);
 let mousedown = 0;
 let color = 'black';
@@ -22,6 +23,10 @@ pallete.addEventListener('change', (e) => {
 eraserButton.addEventListener('click', () => {
     currentMode = 'eraser';
     color = 'white';
+});
+
+randomButton.addEventListener('click', () => {
+    currentMode = 'rainbow';
 });
 
 console.log(size_selector.value);
@@ -72,6 +77,10 @@ function changeColor(e) {
     }
 
     if(currentMode == 'rainbow') {
-        
+        color = `#${Math.floor(Math.random()*16777215).toString(16)}`;
+        if(e.target.style.background == color) return;
+        else {
+            e.target.style.background = color;
+        }
     }
 }
