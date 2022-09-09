@@ -3,6 +3,7 @@ let size_selector = document.getElementById('sizeRange');
 let pallete = document.querySelector('#pallete');
 let eraserButton = document.querySelector('#eraser');
 let randomButton = document.querySelector('#random-button');
+let pixelDisplay = document.querySelector('#pixelSize');
 let pixelSize = Math.pow(size_selector.value, 2);
 let mousedown = false;
 let color = 'black';
@@ -50,6 +51,7 @@ size_selector.addEventListener('change', adjustSize);
 
 function adjustSize(e) {
     setPixelSize(e.target.value);
+    pixelDisplay.textContent = `${e.target.value} x ${e.target.value}`;
 }
 
 function setPixelSize(pixelSize) {
