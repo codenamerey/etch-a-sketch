@@ -21,6 +21,7 @@ pallete.addEventListener('change', (e) => {
 });
 eraserButton.addEventListener('click', () => {
     currentMode = 'eraser';
+    color = 'white';
 });
 
 console.log(size_selector.value);
@@ -63,8 +64,14 @@ function setPixelSize(pixelSize) {
 function changeColor(e) {
     if(mousedown < 0) mousedown = 0;
     if(!mousedown) return;
-    if(e.target.style.background == color) return;
-    else {
-        e.target.style.background = color;
+    if(currentMode == 'regular' || currentMode == 'eraser') {
+        if(e.target.style.background == color) return;
+        else {
+            e.target.style.background = color;
+        }
+    }
+
+    if(currentMode == 'rainbow') {
+        
     }
 }
