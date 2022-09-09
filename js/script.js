@@ -4,16 +4,16 @@ let pallete = document.querySelector('#pallete');
 let eraserButton = document.querySelector('#eraser');
 let randomButton = document.querySelector('#random-button');
 let pixelSize = Math.pow(size_selector.value, 2);
-let mousedown = 0;
+let mousedown = false;
 let color = 'black';
 let currentMode = 'regular';
 
 window.addEventListener('mousedown', () => {
-    mousedown++;
+    mousedown = true;
 });
 
 window.addEventListener('mouseup', () => {
-    mousedown--;
+    mousedown = false;
 });
 
 pallete.addEventListener('change', (e) => {
