@@ -1,6 +1,16 @@
 let pad = document.querySelector('.drawing-pad');
 let size_selector = document.getElementById('sizeRange');
 let pixelSize = Math.pow(size_selector.value, 2);
+let mousedown = 0;
+let color = 'black';
+
+window.addEventListener('mousedown', () => {
+    mousedown++;
+});
+
+window.addEventListener('mouseup', () => {
+    mousedown--;
+});
 
 console.log(size_selector.value);
 
@@ -14,6 +24,10 @@ for (let pixel = 1; pixel <= pixelSize; pixel++) {
 }
 
 let pixels = document.querySelectorAll('.grid');
+
+pixels.forEach((pixel) => {
+    pixel.addEventListener('mouseover', changeColor);
+});
 
 size_selector.addEventListener('change', adjustSize);
 
@@ -30,6 +44,15 @@ function setPixelSize(pixelSize) {
     for (let pixel = 1; pixel <= this.pixelSize; pixel++) {
         let grid = document.createElement('div');
         grid.classList.add('grid');
+        grid.addEventListener('mouseover', changeColor);
         pad.appendChild(grid);        
+    }
+}
+
+function changeColor(e) {
+    if(!mousedown) return;
+    if(e.target.style.background == color) return;
+    else {
+        e.target.style.background = color;
     }
 }
