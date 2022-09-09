@@ -43,6 +43,7 @@ let pixels = document.querySelectorAll('.grid');
 
 pixels.forEach((pixel) => {
     pixel.addEventListener('mouseover', changeColor);
+    pixel.addEventListener('mousedown', changeColor);
 });
 
 size_selector.addEventListener('change', adjustSize);
@@ -62,13 +63,13 @@ function setPixelSize(pixelSize) {
         let grid = document.createElement('div');
         grid.classList.add('grid');
         grid.addEventListener('mouseover', changeColor);
+        grid.addEventListener('mousedown', changeColor);
         pad.appendChild(grid);        
     }
 }
 
 function changeColor(e) {
-    if(mousedown < 0) mousedown = 0;
-    if(!mousedown) return;
+    if(e.type === 'mouseover' && !mousedown) return;
     if(currentMode == 'regular' || currentMode == 'eraser') {
         if(e.target.style.background == color) return;
         else {
