@@ -1,6 +1,7 @@
 let pad = document.querySelector('.drawing-pad');
 let size_selector = document.getElementById('sizeRange');
 let pallete = document.querySelector('#pallete');
+let eraserButton = document.querySelector('#eraser');
 let pixelSize = Math.pow(size_selector.value, 2);
 let mousedown = 0;
 let color = 'black';
@@ -14,6 +15,9 @@ window.addEventListener('mouseup', () => {
 });
 
 pallete.addEventListener('change', setColor);
+eraserButton.addEventListener('click', () => {
+    color = 'white';
+})
 
 console.log(size_selector.value);
 
