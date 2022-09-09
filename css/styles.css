@@ -124,6 +124,7 @@ p {
     box-sizing: border-box;
     display: grid;
     flex: 1 1 auto;
+    overflow: hidden;
 }
 
 .drawing-pad > .grid {
